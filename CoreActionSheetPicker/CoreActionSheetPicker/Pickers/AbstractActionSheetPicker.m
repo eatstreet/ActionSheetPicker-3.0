@@ -506,7 +506,7 @@ CG_INLINE BOOL isIPhone4() {
 - (UIToolbar *)createPickerToolbarWithTitle:(NSString *)title {
     CGRect frame;
     if (@available(iOS 26.0, *)) {
-        frame = CGRectMake(0, 16, self.viewSize.width, 44);
+        frame = CGRectMake(0, 0, self.viewSize.width, 44);
     } else {
         frame = CGRectMake(0, 0, self.viewSize.width, 44);
     }
@@ -515,6 +515,10 @@ CG_INLINE BOOL isIPhone4() {
 
     pickerToolbar.barTintColor = self.toolbarBackgroundColor;
     pickerToolbar.tintColor = self.toolbarButtonsColor;
+    
+    if (@available(iOS 26.0, *)) {
+        [pickerToolbar setBackgroundColor:self.toolbarBackgroundColor];
+    }
 
     NSMutableArray *barItems = [[NSMutableArray alloc] init];
 
